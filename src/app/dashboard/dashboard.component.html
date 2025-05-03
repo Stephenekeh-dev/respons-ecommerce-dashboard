@@ -1,0 +1,40 @@
+<div class="dashboard-wrapper">
+    <h2 class="dashboard-title">ECommerce Dashboard</h2>
+  
+    <div class="dashboard-content">
+      <!-- KPI Cards -->
+      <div class="kpi-cards">
+        <mat-card class="kpi-card kpi-revenue">
+          <mat-icon>attach_money</mat-icon>
+          <h3>Revenue</h3>
+          <p>${{ revenue }}</p>
+        </mat-card>
+        <mat-card class="kpi-card kpi-orders">
+          <mat-icon>shopping_cart</mat-icon>
+          <h3>Orders</h3>
+          <p>{{ orders }}</p>
+        </mat-card>
+        <mat-card class="kpi-card kpi-customers">
+          <mat-icon>people</mat-icon>
+          <h3>Customers</h3>
+          <p>{{ customers }}</p>
+        </mat-card>
+        <mat-card class="kpi-card kpi-products">
+          <mat-icon>inventory</mat-icon>
+          <h3>Products</h3>
+          <p>{{ products }}</p>
+        </mat-card>
+      </div>
+  
+      <!-- Chart -->
+      <mat-card class="chart-card">
+        <div class="chart-title">Weekly Sales Overview</div>
+        <canvas baseChart
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [type]="barChartType">
+        </canvas>
+      </mat-card>
+    </div>
+  </div>
+  

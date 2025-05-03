@@ -1,0 +1,45 @@
+<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+   <!-- Show hamburger button only when collapsed -->
+  @if (isLeftSidebarCollapsed()) {
+    <div class="logo-container">
+      <button class="logo" (click)="toggleCollapse()">
+        <i class="fal fa-bars"></i>
+      </button>
+    </div>
+  }
+
+  <!-- Show close button only when expanded -->
+  @if (!isLeftSidebarCollapsed()) {
+    <div class="logo-container">
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fal fa-times close-icon"></i>
+      </button>
+    </div>
+  }
+
+  <!-- PROFILE SECTION -->
+  @if (!isLeftSidebarCollapsed()) {
+    <div class="profile-container">
+      <img src="/assets/profile.jpg.jpg" alt="Profile" class="profile-image" />
+      <div class="profile-name">Stephen Ekeh</div>
+    </div>
+  }
+
+  <div class="sidenav-nav">
+    @for (item of items; track $index) {
+      <li class="sidenav-nav-item">
+        <a
+          class="sidenav-nav-link"
+          [routerLink]="item.routeLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          @if (!isLeftSidebarCollapsed()) {
+            <span class="sidenav-link-text">{{ item.label }}</span>
+          }
+        </a>
+      </li>
+    }
+  </div>
+</div>
